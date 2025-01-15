@@ -47,3 +47,46 @@ int main() {
 
     return 0;
 }
+
+/*
+// Approach: Brute Force
+class Solution {
+public:
+    int waysToMakeFair(vector<int>& nums) {
+        int count = 0;
+
+        // Iterate over all indices
+        for (int i = 0; i < nums.size(); ++i) {
+            int evenSum = 0, oddSum = 0;
+
+            // Calculate sums for the array excluding index i
+            for (int j = 0; j < nums.size(); ++j) {
+                if (j == i) continue;
+                if (j < i) {
+                    if (j % 2 == 0) evenSum += nums[j];
+                    else oddSum += nums[j];
+                } else {
+                    if ((j - 1) % 2 == 0) evenSum += nums[j];
+                    else oddSum += nums[j];
+                }
+            }
+
+            // Check if the sums are equal
+            if (evenSum == oddSum) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+};
+
+
+Time Complexity:
+- Outer loop runs for O(n), iterating over all indices.
+- Inner loop runs for O(n), calculating the sums for each removal.
+- Total Time Complexity: O(n^2), where n is the size of the array.
+  Explanation: For each index, we recalculate the sums from scratch.
+Space Complexity: O(1), as no additional data structures are used.
+
+*/
